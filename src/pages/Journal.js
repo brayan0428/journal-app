@@ -1,3 +1,9 @@
 import React from "react";
+import { Sidebar } from "../components/Sidebar";
 
-export const Journal = () => <h1>Journal</h1>;
+export const Journal = () => (
+  <>
+    <Sidebar />
+    <div></div>
+  </>
+);
