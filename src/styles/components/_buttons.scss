@@ -9,6 +9,9 @@
   &:focus {
     outline: 0;
   }
+  &:hover {
+    color: darken($color: white, $amount: 10);
+  }
 }
 
 .btn-primary {

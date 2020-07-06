@@ -1,0 +1,52 @@
+.note__content {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.note__appbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: $primary;
+  color: white;
+}
+
+.note__details {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+
+.note__title-input,
+.note__textarea {
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.note__title-input {
+  margin-bottom: 10px;
+  font-size: 25px;
+  color: $dark-grey;
+  font-weight: 700;
+}
+
+.note__textarea {
+  font-size: 20px;
+  resize: none;
+  flex: 1 1 auto;
+  color: $dark-grey;
+  margin-bottom: 10px;
+}
+
+.note__image img {
+  height: 150px;
+  object-fit: cover;
+  box-shadow: 3px 3px $dark-grey;
+}
