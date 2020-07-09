@@ -36,3 +36,15 @@
     outline: none;
   }
 }
+
+.auth__form-error {
+  background-color: red;
+  color: white;
+  text-align: justify;
+  font-size: 14px;
+  padding: 5px 15px;
+  margin-bottom: 15px;
+  border-radius: 2px;
+  font-weight: bold;
+  font-style: italic;
+}

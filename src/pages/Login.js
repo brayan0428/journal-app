@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
 import { useDispatch } from "react-redux";
-import { loginWithEmailAndPassword } from "../actions/auth";
+import { loginWithEmailAndPassword, loginWithGoogle } from "../actions/auth";
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -17,6 +17,10 @@ export const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginWithEmailAndPassword(email, password));
+  };
+
+  const handleLoginGoogle = () => {
+    dispatch(loginWithGoogle());
   };
   return (
     <>
@@ -41,7 +45,7 @@ export const Login = () => {
         />
         <button className="btn btn-primary btn-block">Login</button>
       </form>
-      <div className="google-btn mb-5">
+      <div className="google-btn mb-5" onClick={handleLoginGoogle}>
         <div className="google-icon-wrapper">
           <img
             className="google-icon"

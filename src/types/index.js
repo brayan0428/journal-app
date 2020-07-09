@@ -1,4 +1,6 @@
 export const types = {
   AUTH_LOGIN: "AUTH_LOGIN",
   AUTH_LOGOUT: "AUTH_LOGOUT",
+  UI_SET_ERROR: "UI_SET_ERROR",
+  UI_REMOVE_ERROR: "UI_REMOVE_ERROR",
 };
