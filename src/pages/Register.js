@@ -8,7 +8,7 @@ import { registerWithEmailAndPassword } from "../actions/auth";
 
 export const Register = () => {
   const dispatch = useDispatch();
-  const { msgError } = useSelector((state) => state.ui);
+  const { msgError, loading } = useSelector((state) => state.ui);
 
   const [values, handleInputChange] = useForm({
     name: "Test 1",
@@ -21,7 +21,6 @@ export const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, email, password, confirmPassword);
     if (validForm()) {
       dispatch(registerWithEmailAndPassword(email, password, name));
     }
@@ -86,7 +85,9 @@ export const Register = () => {
           value={confirmPassword}
           onChange={handleInputChange}
         />
-        <button className="btn btn-primary btn-block">Register</button>
+        <button className="btn btn-primary btn-block" disabled={loading}>
+          {loading && <i className="fas fa-spinner fa-spin"></i>} Register
+        </button>
       </form>
       <Link to="/auth/login" className="d-block text-center link">
         Login

@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginWithEmailAndPassword, loginWithGoogle } from "../actions/auth";
 
 export const Login = () => {
   const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.ui);
 
   const [values, handleInputChange] = useForm({
     email: "brayan0428@gmail.com",
@@ -43,7 +44,9 @@ export const Login = () => {
           value={password}
           onChange={handleInputChange}
         />
-        <button className="btn btn-primary btn-block">Login</button>
+        <button className="btn btn-primary btn-block" disabled={loading}>
+          {loading && <i className="fas fa-spinner fa-spin"></i>} Login
+        </button>
       </form>
       <div className="google-btn mb-5" onClick={handleLoginGoogle}>
         <div className="google-icon-wrapper">
