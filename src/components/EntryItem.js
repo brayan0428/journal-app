@@ -31,7 +31,9 @@ export const EntryItem = ({id, title,body,date,url}) => {
       <div className="sidebar__entry-box-details">
         <h4>{title}</h4>
         <p>
-          {body}
+          {
+            body.length > 50 ? `${body.substr(0,50)}...` : body
+          }
         </p>
       </div>
       <div className="sidebar__entry-date">

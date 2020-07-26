@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { NoteAppBar } from "./NoteAppBar";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "../hooks/useForm";
-import { activeNote } from "../actions/notes";
+import { activeNote, startDeleteNote } from "../actions/notes";
 
 export const Note = () => {
   const dispatch = useDispatch()
@@ -10,7 +10,11 @@ export const Note = () => {
   const [values, inputChangeValue, reset] = useForm(note)
   const idRef = useRef(note.id)
 
-  const {title,body} = values
+  const {title,body,id} = values
+
+  const handleDelete = () => {
+    dispatch(startDeleteNote(id))
+  }
 
   useEffect(() => {
     if(note.id !== idRef.current){
@@ -56,6 +60,7 @@ export const Note = () => {
           </div>
         }
       </div>
+      <button className="btn btn-danger" onClick={handleDelete}>Delete</button>
     </div>
   );
 };

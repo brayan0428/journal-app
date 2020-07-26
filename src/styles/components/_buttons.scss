@@ -23,6 +23,15 @@
   }
 }
 
+.btn-danger {
+  border-radius: 2px;
+  background-color: red;
+
+  &:hover {
+    background-color: darken($color: red, $amount: 10);
+  }
+}
+
 .btn-block {
   width: 100%;
 }

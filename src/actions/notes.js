@@ -14,8 +14,14 @@ export const addNewNote = () => {
         }
         const docRef = await db.collection(`${uid}/journal/notes`).add(newNote)
         dispatch(activeNote(docRef.id, newNote))
+        dispatch(addNote(docRef.id, newNote))
     }
 }
+
+export const addNote = (id, note) => ({
+    type: types.NOTES_ADD,
+    payload: {id,...note}
+})
 
 export const activeNote = (uid, note) => ({
     type: types.NOTES_ACTIVE,
@@ -74,3 +80,21 @@ export const uploadPicture = (file) => {
         dispatch(startSaveNote(note.id, note))
     }
 }
+
+export const startDeleteNote = (id) => {
+    return async (dispatch, getState) => {
+        const uid = getState().auth.id
+        await db.doc(`${uid}/journal/notes/${id}`).delete()
+        dispatch(deleteNote(id))
+        Swal.fire('Success', 'Note removed', 'success')
+    }
+}
+
+export const deleteNote = (id) => ({
+    type: types.NOTES_DELETE,
+    payload: id
+})
+
+export const notesLogout = () => ({
+    type: types.NOTES_LOGOUT
+})
