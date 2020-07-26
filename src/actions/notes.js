@@ -2,6 +2,7 @@ import { db } from "../firebase/config"
 import { types } from "../types"
 import { loadNotes } from "../helpers/loadNotes"
 import Swal from 'sweetalert2'
+import { uploadImage } from "../helpers/uploadImage"
 
 export const addNewNote = () => {
     return async (dispatch, getState) => {
@@ -56,3 +57,20 @@ export const updateNote = (id,note) => ({
         id, ...note
     }
 })
+
+export const uploadPicture = (file) => {
+    return async (dispatch, getState) => {
+        Swal.fire({
+            title: 'Please wait...',
+            allowOutsideClick: false,
+            onBeforeOpen: () => {
+                Swal.showLoading()
+            }
+        })
+        const note = getState().notes.active
+        const url = await uploadImage(file)
+        note.url = url
+        Swal.close()
+        dispatch(startSaveNote(note.id, note))
+    }
+}

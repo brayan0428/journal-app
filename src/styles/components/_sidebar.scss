@@ -44,7 +44,9 @@
   display: flex;
   margin-bottom: 10px;
   overflow: hidden;
-  padding: 0 10px;
+  align-items: center;
+  padding-right: 10px ;
+  justify-content: space-between;
 }
 
 .sidebar__entry-box-image {
