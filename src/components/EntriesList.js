@@ -1,12 +1,14 @@
 import React from "react";
 import { EntryItem } from "./EntryItem";
+import { useSelector } from "react-redux";
 
 export const EntriesList = () => {
-  const entries = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+  const {notes} = useSelector(state => state.notes)
+  
   return (
     <div className="sidebar__entries-list">
-      {entries.map((entry) => (
-        <EntryItem key={entry} />
+      {notes.map((note) => (
+        <EntryItem key={note.id} {...note} />
       ))}
     </div>
   );
