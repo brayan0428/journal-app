@@ -9,8 +9,8 @@ export const Login = () => {
   const { loading } = useSelector((state) => state.ui);
 
   const [values, handleInputChange] = useForm({
-    email: "brayan0428@gmail.com",
-    password: "123456",
+    email: "",
+    password: "",
   });
 
   const { email, password } = values;
